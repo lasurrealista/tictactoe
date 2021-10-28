@@ -1,14 +1,14 @@
 /* 
 Hozd létre a szükséges változókat, és definiáld is őket:
-- matrix: ez egy tömb, amely az egész játékteret tartalmazza,
-- stepCount: ez egy szám, amely számolja a lépéseket,
-- cols: ez az oszlopok száma,
-- rows: ez a sorok száma,
-- mark: ez a jel, amellyel játszanak a játékosok (0 vagy X).
+- matrix: ez egy tömb (alapértelmezetten üres), amely az egész játékteret tartalmazza,
+- stepCount: ez egy szám (alapértelmezetten 0), a megtett lépések száma,
+- cols: ez az oszlopok száma (alapértelmezetten 3),
+- rows: ez a sorok száma (alapértelmezetten 3),
+- mark: ez a jel, amellyel játszanak a játékosok (0 vagy X, alapértelmezetten 'X').
 */
 
-/* 
-Írd meg az initState elnevezésű függvényt, 
+/**
+Fejtsd ki az initState elnevezésű függvényt, 
 amely feltölti üres mezőkkel a játékteret, 
 tehát az összes sort és oszlopot a mátrixban.
 
@@ -25,12 +25,13 @@ majd végigmész a tömbön,
 Ez utóbbi visszatérési értéke:
 a sorok száma tömbbé alakítva,
 és feltöltve null-lal.
+@returns void (nem ad vissza semmit)
 */
 const initState = () => {
     
 }
 
-/*
+/**
 A changeMatrixValue függvényt már készen van, 
 ennek a segítségével tudjuk azonosítani az egyes cellákat.
 FONTOS:
@@ -57,7 +58,7 @@ const changeMatrixValue = (element) => {
 }
 
 /* 
-Írd meg a deleteSigns elnevezésű függvényt, 
+Fejtsd ki a deleteSigns elnevezésű függvényt, 
 amely kiválasztja az összes cellát, 
 és mindegyik elemben elhelyez egy üres string-et.
 */
@@ -66,7 +67,7 @@ const deleteSigns = () => {
 }
 
 /*
-Írd meg az increaseCounter elnevezésű függvényt, 
+Fejtsd ki az increaseCounter elnevezésű függvényt, 
 amely a megtett lépések számát növeli eggyel.
 */
 const increaseCounter = () => {
@@ -74,7 +75,7 @@ const increaseCounter = () => {
 }
 
 /*
-Írd meg a modifyCell elnevezésű függvényt, 
+Fejtsd ki a modifyCell elnevezésű függvényt, 
 amely beállítja az elem tartalmának a használt jelet,
 majd kattintásra (esemény) eltávolítja a handleClick függvényt. 
 */
@@ -83,18 +84,18 @@ const modifyCell = (element) => {
 }
 
 /*
-Írd meg a setMark elnevezésű függvényt, 
+Fejtsd ki a setMark elnevezésű függvényt, 
 amely a jelre beállítja a következő lépésnél használt jelet úgy, 
 hogy ha az X-et használtuk éppen, azaz a jel === X, 
 akkor beállítja a O-t, hiszen a másik játékos azzal fog tenni egy jelet,
 ha pedig a 0-t használtuk, beállítja az X-et.
 */
 const setMark = () => {
-    mark = mark === 'X' ? 'O' : 'X';
+    
 }
 
 /*
-Írd meg a handleClick elnevezésű függvényt, 
+Fejtsd ki a handleClick elnevezésű függvényt, 
 amely meghívja a következő függvényeket:
 - increaseCounter()
 - modifyCell(event.target)
@@ -108,7 +109,7 @@ const handleClick = (event) => {
 }
 
 /*
-Írd meg az addClickListener elnevezésű függvényt, 
+Fejtsd ki az addClickListener elnevezésű függvényt, 
 amely kiválasztja a cellákat, 
 és kattintásra (esemény) mindegyikhez hozzáadja a handleClick függvényt.
 */
@@ -117,25 +118,26 @@ const addClickListener = () => {
 }
 
 /*
-Írd meg a removeAllClickListener elnevezésű függvényt, 
+Fejtsd ki a removeAllClickListeners elnevezésű függvényt, 
 amely kiválasztja a cellákat, 
 és kattintásra (esemény) mindegyikről eltávolítja a handleClick függvényt.
 */
-const removeAllClickListener = () => {
+const removeAllClickListeners = () => {
  
 }
 
 /*
-Írd meg a checkValues elnevezésű függvényt, 
-amely végigmegy a kapott tömbön,
-és a sor minden EGYES elemének értékére beállítja az X-et VAGY
-a sor minden egyes elemének értékére beállítja a 0-t.
+Fejtsd ki a checkValues elnevezésű függvényt, 
+amely végigmegy a kapott tömb sorain,
+és a sor minden EGYES elemének értékére megvizsgálja, 
+hogy O vagy X. Ha a sor minden egyes eleme O vagy X, 
+akkor az O vagy az X győzött.
+Ezután ha valaki győzött, akkor pl. egy ilyen tömböt kapunk: [true, false, false]
 */
-const checkValues = (array) => array.map(row =>
-    )
+const checkValues = (array) => array.map(row => {/*ide írd a kódot*/})
     .indexOf(true) !== -1;
     /*
-    Ha true-t kapunk visza adott elemre, akkor 
+    Ha true-t kapunk visza adott sorra, akkor 
     annak indexét vizsgálva nem kaphatunk -1-et.
     Azaz az elem benne van a tömbben.
     */
@@ -158,7 +160,7 @@ const checkValues = (array) => array.map(row =>
 ]);
 
 /*
-Írd meg a checkWinner elnevezésű függvényt, 
+Fejtsd ki a checkWinner elnevezésű függvényt, 
 amely...
 */
 const checkWinner = () => {
@@ -175,7 +177,7 @@ const checkWinner = () => {
 A HTML-ben a játékteret követően vegyél fel egy divet message osztállyal,
 'Let's play.' tartalommal.
 
-Írd meg a setMessage elnevezésű függvényt, 
+Fejtsd ki a setMessage elnevezésű függvényt, 
 amely kiválasztja a message osztályú elemet, 
 és az üzenetet állítja be a div tartalmának.
 */
@@ -184,7 +186,7 @@ const setMessage = (message) => {
 }
 
 /*
-Írd meg a startGame elnevezésű függvényt, 
+Fejtsd ki a startGame elnevezésű függvényt, 
 amely meghívja a következő függvényeket:
 - initState()
 - addClickListener()
@@ -195,7 +197,7 @@ const startGame = () => {
 }
 
 /*
-Írd meg az endGame elnevezésű függvényt, 
+Fejtsd ki az endGame elnevezésű függvényt, 
 amely a setMessage nevű függvény segítségével beállítja az üzenetet, 
 amelynek tartalma:
 'The winner is Player ' 
@@ -205,7 +207,7 @@ plusz:
 Ez az utóbbi kódrészlet kiválasztja azt a jelet, amellyel a nyertes játszott
 (és egy pontot helyez el a mondat végén).
 
-Ezután a függvény meghívja a removeAllClickListener() nevű függvényt.
+Ezután a függvény meghívja a removeAllClickListeners() nevű függvényt.
 */
 const endGame = () => {
     
